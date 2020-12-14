@@ -1,0 +1,29 @@
+<div class="row mb-3 justify-content-end">
+  <div class="col-auto">
+    <select class="form-control"
+            [ngModel]="sortLimit"
+            (ngModelChange)="onSortLimitChange($event)">
+      <option [ngValue]="SortLimit.Ten">{{SortLimit.Ten}}</option>
+      <option [ngValue]="SortLimit.Twenty">{{SortLimit.Twenty}}</option>
+      <option [ngValue]="SortLimit.Thirty">{{SortLimit.Thirty}}</option>
+      <option [ngValue]="SortLimit.Forty">{{SortLimit.Forty}}</option>
+      <option [ngValue]="SortLimit.Fifty">{{SortLimit.Fifty}}</option>
+      <option [ngValue]="SortLimit.Sixty">{{SortLimit.Sixty}}</option>
+    </select>
+  </div>
+
+  <div class="col-auto">
+    <ul class="pagination">
+      <li class="page-item">
+        <a (click)="onPageChangeButtonClick(PageChange.Previous)">
+          <span class="page-link">Previous</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a (click)="onPageChangeButtonClick(PageChange.Next)">
+          <span class="page-link">Next</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

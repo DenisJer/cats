@@ -1,0 +1,31 @@
+<div *ngIf="!loading; else spinner">
+  <h1>Find some interesting cats</h1>
+  <span>Cats with descriptions has additional information about them</span>
+  <div *ngIf="catsData">
+    <ng-container *ngTemplateOutlet="sorting"></ng-container>
+    <div class="gallery-grid mb-5">
+      <a class="gallery-frame"
+         [routerLink]="[CatsPaths.root.fullPath, 'cat', cat.id]"
+         *ngFor="let cat of catsData; let i = index">
+        <img class="gallery-img"
+             [src]="cat.url"
+             [alt]="cat.url"
+             [title]="'Image form ' + cat.url">
+        <figcaption *ngIf="catHasDescription">
+          {{cat.breeds[0]?.description}}
+        </figcaption>
+      </a>
+    </div>
+    <ng-container *ngTemplateOutlet="sorting"></ng-container>
+  </div>
+</div>
+
+<ng-template #spinner>
+  <app-spinner></app-spinner>
+</ng-template>
+
+<ng-template #sorting>
+  <app-sorting [sortLimit]="sortLimit"
+               (limitChange)="onLimitChange($event)"
+               (pageChange)="onPageChange($event)"></app-sorting>
+</ng-template>

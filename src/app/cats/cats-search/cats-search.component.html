@@ -1,0 +1,5 @@
+<app-cats-list [loading]="loading$ | async"
+               [sortLimit]="sortLimit$ | async"
+               [catsData]="catsData$ | async"
+               (limitChange)="onLimitChange($event)"
+               (pageChange)="onPageChange($event)"></app-cats-list>

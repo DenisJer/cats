@@ -1,0 +1,62 @@
+<div class="d-flex align-items-center flex-column">
+
+  <h1 *ngIf="noInformationAboutCat;else detailForm">
+    {{noInformationAboutCat}}
+  </h1>
+  <div class="card"
+       style="width: 18rem;">
+    <img class="card-img-top"
+         [src]="catDetails.url"
+         [alt]="catDetails.url">
+  </div>
+
+  <ng-template #detailForm>
+
+    <form [formGroup]="catDetailsForm">
+      <div [formGroup]="breedsGroupArray">
+        <fieldset *ngFor="let control of breedsGroupArray.controls; let i=index"
+                  [formGroupName]="i">
+          <div class="form-group">
+            <label for="name">Breed name</label>
+            <input class="form-control"
+                   id="name"
+                   formControlName="name">
+          </div>
+
+          <div class="form-group">
+            <label for="origin">Origin</label>
+            <input class="form-control"
+                   id="origin"
+                   formControlName="origin">
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control"
+                      id="description"
+                      formControlName="description"
+                      rows="3"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="temperament">Temperament</label>
+            <input class="form-control"
+                   id="temperament"
+                   formControlName="temperament">
+          </div>
+
+          <div class="form-group">
+            <label for="life-span">Life span (years)</label>
+            <input class="form-control"
+                   id="life-span"
+                   formControlName="lifeSpan">
+          </div>
+        </fieldset>
+      </div>
+    </form>
+  </ng-template>
+
+  <button [routerLink]="[CatsPaths.search.fullPath]"
+          class="btn btn-secondary">Go back to search some interesting cats</button>
+
+</div>
